@@ -8,26 +8,26 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
-  <script defer src="js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </head>
 <body>
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href="index.html">Conecta+ ONG</a>
+    <a class="brand" href="index.html" data-spa-link>Conecta+ ONG</a>
     <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" data-hamburger>☰</button>
     <nav class="nav" data-nav>
-      <a href="index.html">Início</a>
+      <a href="index.html" data-spa-link>Início</a>
       <div class="nav-item">
-        <a href="projetos.html" aria-haspopup="true" aria-expanded="false">Projetos ▾</a>
+        <a href="projetos.html" data-spa-link aria-haspopup="true" aria-expanded="false">Projetos ▾</a>
         <div class="dropdown" role="menu">
-          <a href="projetos.html#educacao" role="menuitem">Educação</a>
-          <a href="projetos.html#saude" role="menuitem">Saúde</a>
-          <a href="projetos.html#meioambiente" role="menuitem">Meio ambiente</a>
+          <a href="projetos.html#educacao" data-spa-link role="menuitem">Educação</a>
+          <a href="projetos.html#saude" data-spa-link role="menuitem">Saúde</a>
+          <a href="projetos.html#meioambiente" data-spa-link role="menuitem">Meio ambiente</a>
         </div>
       </div>
-      <a href="voluntarios.html">Voluntariado</a>
-      <a href="doacoes.html">Doações</a>
-      <a href="contato.html">Contato</a>
+      <a href="voluntarios.html" data-spa-link>Voluntariado</a>
+      <a href="doacoes.html" data-spa-link>Doações</a>
+      <a href="contato.html" data-spa-link>Contato</a>
     </nav>
   </div>
 </header>
@@ -47,6 +47,7 @@
     </div>
   </div>
 </div>
+<main id="app" data-spa-root>
 <section class="section">
   <div class="container">
     <h2 class="section-title">Cadastro</h2>
@@ -119,6 +120,7 @@
     </form>
   </div>
 </section>
+</main>
 <footer class="section" style="background:var(--white); border-top:1px solid var(--color-neutral-200)">
   <div class="container grid-12">
     <div class="col-md-6 col-lg-4">

@@ -1,3 +1,8 @@
+import { initRouter } from './router.js';
+import { renderProjects } from './templates.js';
+import { bindFormConsistency, restoreFormDraft } from './validators.js';
+import { initState } from './state.js';
+
 (function(){
   const burger=document.querySelector('[data-hamburger]');
   const nav=document.querySelector('[data-nav]');
@@ -20,58 +25,42 @@
     if(closeBtn&&backdrop){backdrop.classList.remove('open');}
     if(backdrop&&e.target===backdrop){backdrop.classList.remove('open');}
   });
-  document.addEventListener('input',(e)=>{
-    const field=e.target;
-    if(field.matches('.input,.select,.textarea')){
-      if(field.checkValidity()){field.classList.add('is-valid');field.classList.remove('is-invalid');}
-      else{field.classList.add('is-invalid');field.classList.remove('is-valid');}
-    }
+  function applyMask(el, formatter){
+    const handle=()=>{ const start=el.selectionStart; const before=el.value.length; el.value=formatter(el.value); const after=el.value.length; const diff=after-before; el.selectionStart=el.selectionEnd=start+(diff>0?1:0); };
+    ['input','blur'].forEach(evt=>el.addEventListener(evt,handle));
+  }
+  function onlyDigits(v){ return v.replace(/\D+/g,''); }
+  function formatCPF(v){ v=onlyDigits(v).slice(0,11); return v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'); }
+  function formatPhone(v){ v=onlyDigits(v).slice(0,11); return (v.length<=10? v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3'): v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3')).trim(); }
+  function formatCEP(v){ v=onlyDigits(v).slice(0,8); return v.replace(/(\d{5})(\d{0,3})/,'$1-$2').trim(); }
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const cpf=document.querySelector('#cpf'); const tel=document.querySelector('#telefone'); const cep=document.querySelector('#cep');
+    if(cpf) applyMask(cpf,formatCPF); if(tel) applyMask(tel,formatPhone); if(cep) applyMask(cep,formatCEP);
   });
+})();
 
-
-// --- Máscaras de input (CPF, telefone, CEP) ---
-function applyMask(el, formatter){
-  const handle = (e)=>{
-    const start = el.selectionStart;
-    const beforeLen = el.value.length;
-    el.value = formatter(el.value);
-    const afterLen = el.value.length;
-    const diff = afterLen - beforeLen;
-    el.selectionStart = el.selectionEnd = start + (diff>0?1:0);
-  };
-  ['input','blur'].forEach(evt => el.addEventListener(evt, handle));
-}
-
-function onlyDigits(v){ return v.replace(/\D+/g,''); }
-
-function formatCPF(v){
-  v = onlyDigits(v).slice(0,11);
-  return v.replace(/(\d{3})(\d)/, '$1.$2')
-          .replace(/(\d{3})(\d)/, '$1.$2')
-          .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-}
-
-function formatPhone(v){
-  v = onlyDigits(v).slice(0,11);
-  if(v.length <= 10){
-    return v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3').trim();
-  } else {
-    return v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3').trim();
+function afterNavigate(path){
+  if (path.endsWith('/cadastro.html')) {
+    const form = document.querySelector('form');
+    if (form) {
+      bindFormConsistency(form);
+      restoreFormDraft(form);
+    }
   }
 }
 
-function formatCEP(v){
-  v = onlyDigits(v).slice(0,8);
-  return v.replace(/(\d{5})(\d{0,3})/, '$1-$2').trim();
-}
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  const cpf = document.querySelector('#cpf');
-  const tel = document.querySelector('#telefone');
-  const cep = document.querySelector('#cep');
-  if(cpf) applyMask(cpf, formatCPF);
-  if(tel) applyMask(tel, formatPhone);
-  if(cep) applyMask(cep, formatCEP);
+document.addEventListener('DOMContentLoaded', () => {
+  initState();
+  const dynamicRoutes = {
+    '/projetos.html': async () => await renderProjects(),
+  };
+  initRouter({ onAfterNavigate: afterNavigate, dynamicRoutes });
+  afterNavigate(window.location.pathname || '/index.html');
+  if ((window.location.pathname || '').endsWith('/cadastro.html')) {
+    const form = document.querySelector('form');
+    if (form) {
+      bindFormConsistency(form);
+      restoreFormDraft(form);
+    }
+  }
 });
-
-})();
