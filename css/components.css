@@ -1,0 +1,44 @@
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:var(--radius-lg);font-weight:700;border:2px solid transparent;cursor:pointer;transition:transform .05s ease,box-shadow .2s ease}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn-primary{background:var(--color-primary-600);color:var(--white)}
+.btn-primary:hover{background:var(--color-primary-500)}
+.btn-primary:focus-visible{box-shadow:0 0 0 4px rgba(10,132,214,.25)}
+.btn-secondary{background:var(--color-secondary-600);color:var(--white)}
+.btn-secondary:hover{background:var(--color-secondary-500)}
+.btn-outline{background:transparent;color:var(--color-primary-600);border-color:var(--color-primary-400)}
+.btn-outline:hover{background:var(--color-primary-400);color:var(--white)}
+.card{background:var(--white);border:1px solid var(--color-neutral-200);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);overflow:hidden}
+.card-media{aspect-ratio:16/9;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center}
+.card-body{padding:var(--space-3)}
+.card-title{font-size:var(--fs-600);margin:0 0 6px 0}
+.card-meta{font-size:var(--fs-300);color:var(--color-neutral-500)}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:var(--fs-300);font-weight:700}
+.badge.info{background:rgba(59,130,246,.12);color:var(--color-info-500)}
+.badge.success{background:rgba(34,197,94,.12);color:var(--color-success-500)}
+.badge.warning{background:rgba(245,158,11,.12);color:var(--color-warning-500)}
+.badge.danger{background:rgba(239,68,68,.12);color:var(--color-danger-500)}
+.form{display:grid;gap:var(--space-2)}
+.form .row{display:grid;gap:var(--space-2)}
+@media (min-width:var(--bp-md)){.form .row{grid-template-columns:repeat(2,1fr)}}
+.label{font-weight:700;font-size:var(--fs-300);color:var(--color-neutral-700)}
+.input,.select,.textarea{padding:12px 14px;border-radius:12px;border:1px solid var(--color-neutral-300);background:var(--white);font-size:var(--fs-400);outline:none}
+.input:focus,.select:focus,.textarea:focus{border-color:var(--color-primary-400);box-shadow:0 0 0 4px rgba(79,179,255,.2)}
+.help{font-size:var(--fs-300);color:var(--color-neutral-500)}
+.input.is-invalid,.select.is-invalid,.textarea.is-invalid{border-color:var(--color-danger-500);box-shadow:0 0 0 4px rgba(239,68,68,.15)}
+.input.is-valid,.select.is-valid,.textarea.is-valid{border-color:var(--color-success-500);box-shadow:0 0 0 4px rgba(34,197,94,.15)}
+.error-text{color:var(--color-danger-500);font-size:var(--fs-300)}
+.alert{border-radius:14px;padding:14px 16px;border:1px solid transparent}
+.alert.info{background:rgba(59,130,246,.08);color:var(--color-info-500);border-color:rgba(59,130,246,.2)}
+.alert.success{background:rgba(34,197,94,.08);color:var(--color-success-500);border-color:rgba(34,197,94,.2)}
+.alert.warning{background:rgba(245,158,11,.08);color:var(--color-warning-500);border-color:rgba(245,158,11,.2)}
+.alert.danger{background:rgba(239,68,68,.08);color:var(--color-danger-500);border-color:rgba(239,68,68,.2)}
+.toast-container{position:fixed;right:16px;bottom:16px;display:grid;gap:10px;z-index:2000}
+.toast{background:var(--white);border:1px solid var(--color-neutral-200);border-radius:12px;box-shadow:var(--shadow-lg);padding:12px 14px;min-width:240px}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;z-index:1500}
+.modal{width:min(96vw,560px);background:var(--white);border-radius:18px;border:1px solid var(--color-neutral-200);box-shadow:var(--shadow-lg);overflow:hidden}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--color-neutral-200)}
+.modal-body{padding:var(--space-3)}
+.modal-footer{display:flex;justify-content:flex-end;gap:10px;padding:var(--space-2) var(--space-3);border-top:1px solid var(--color-neutral-200)}
+.modal-backdrop.open{display:flex}

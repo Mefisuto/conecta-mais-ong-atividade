@@ -1,0 +1,10 @@
+.home-stats{display:grid;gap:var(--space-3);grid-template-columns:repeat(2,1fr)}
+@media (min-width:var(--bp-md)){.home-stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--white);border:1px solid var(--color-neutral-200);border-radius:16px;padding:var(--space-3);text-align:center}
+.stat .num{font-size:var(--fs-700);font-weight:800;color:var(--color-primary-600)}
+.projects-grid{display:grid;gap:var(--space-3);grid-template-columns:1fr}
+@media (min-width:var(--bp-sm)){.projects-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:var(--bp-lg)){.projects-grid{grid-template-columns:repeat(3,1fr)}}
+.donation-cta{background:linear-gradient(135deg,var(--color-secondary-600),var(--color-secondary-500));color:var(--white);border-radius:24px;padding:var(--space-4)}
+.volunteer-steps{display:grid;gap:var(--space-3);grid-template-columns:1fr}
+@media (min-width:var(--bp-md)){.volunteer-steps{grid-template-columns:repeat(3,1fr)}}

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conecta+ ONG</title>
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="index.html">Conecta+ ONG</a>
+    <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" data-hamburger>☰</button>
+    <nav class="nav" data-nav>
+      <a href="index.html">Início</a>
+      <div class="nav-item">
+        <a href="projetos.html" aria-haspopup="true" aria-expanded="false">Projetos ▾</a>
+        <div class="dropdown" role="menu">
+          <a href="projetos.html#educacao" role="menuitem">Educação</a>
+          <a href="projetos.html#saude" role="menuitem">Saúde</a>
+          <a href="projetos.html#meioambiente" role="menuitem">Meio ambiente</a>
+        </div>
+      </div>
+      <a href="voluntarios.html">Voluntariado</a>
+      <a href="doacoes.html">Doações</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
+</header>
+<div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+<div class="modal-backdrop" data-modal-backdrop>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-header">
+      <h3 id="modal-title">Confirmação</h3>
+      <button class="btn btn-outline" data-close-modal>Fechar</button>
+    </div>
+    <div class="modal-body">
+      <p>Confirme a ação.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" data-close-modal>Cancelar</button>
+      <button class="btn btn-primary" data-close-modal>OK</button>
+    </div>
+  </div>
+</div>
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Cadastro</h2>
+    <form class="form" novalidate>
+      <div class="row">
+        <div>
+          <label class="label" for="nome">Nome completo</label>
+          <input class="input" id="nome" name="nome" type="text" required>
+        </div>
+        <div>
+          <label class="label" for="email">E-mail</label>
+          <input class="input" id="email" name="email" type="email" required>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label class="label" for="cpf">CPF</label>
+          <input class="input" id="cpf" name="cpf" type="text" inputmode="numeric" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
+          <div class="help">Use o formato 000.000.000-00</div>
+        </div>
+        <div>
+          <label class="label" for="telefone">Telefone</label>
+          <input class="input" id="telefone" name="telefone" type="tel" placeholder="(11) 99999-9999" required>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label class="label" for="nascimento">Data de Nascimento</label>
+          <input class="input" id="nascimento" name="nascimento" type="date" required>
+        </div>
+        <div>
+          <label class="label" for="cep">CEP</label>
+          <input class="input" id="cep" name="cep" type="text" inputmode="numeric" pattern="\d{5}-\d{3}" placeholder="00000-000" required>
+          <div class="help">Use o formato 00000-000</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label class="label" for="endereco">Endereço</label>
+          <input class="input" id="endereco" name="endereco" type="text" required>
+        </div>
+        <div>
+          <label class="label" for="cidade">Cidade</label>
+          <input class="input" id="cidade" name="cidade" type="text" required>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label class="label" for="estado">Estado</label>
+          <select class="select" id="estado" name="estado" required>
+            <option value="">Selecione...</option>
+            <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+            <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+            <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+            <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+            <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+            <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+            <option>SP</option><option>SE</option><option>TO</option>
+          </select>
+        </div>
+        <div>
+          <label class="label" for="sobre">Sobre você</label>
+          <textarea class="textarea" id="sobre" name="sobre" rows="3" placeholder="Conte um pouco sobre você"></textarea>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary" type="submit" data-open-modal>Enviar</button>
+        <button class="btn" type="reset">Limpar</button>
+      </div>
+    </form>
+  </div>
+</section>
+<footer class="section" style="background:var(--white); border-top:1px solid var(--color-neutral-200)">
+  <div class="container grid-12">
+    <div class="col-md-6 col-lg-4">
+      <strong>Conecta+ ONG</strong>
+      <p class="help">CNPJ 00.000.000/0000-00</p>
+    </div>
+    <div class="col-md-6 col-lg-4 stack">
+      <strong>Contato</strong>
+      <a href="mailto:contato@conectamais.org">contato@conectamais.org</a>
+      <span class="help">(11) 0000-0000</span>
+    </div>
+    <div class="col-md-12 col-lg-4 stack">
+      <strong>Transparência</strong>
+      <a href="#">Relatórios</a>
+      <a href="#">Política de privacidade</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
