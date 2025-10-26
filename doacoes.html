@@ -4,22 +4,23 @@
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Conecta+ ONG</title>
-  <link rel="stylesheet" href="css/design-system.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/pages.css">
-  <script type="module" src="js/main.js"></script>
+  <link rel="stylesheet" href="css/design-system.min.css">
+  <link rel="stylesheet" href="css/layout.min.css">
+  <link rel="stylesheet" href="css/components.min.css">
+  <link rel="stylesheet" href="css/pages.min.css">
+  <script type="module" src="js/main.min.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#app">Pular para conteúdo</a>
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href="index.html" data-spa-link>Conecta+ ONG</a>
     <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" data-hamburger>☰</button>
-    <nav class="nav" data-nav>
+    <nav class="nav" data-nav aria-label="Principal">
       <a href="index.html" data-spa-link>Início</a>
       <div class="nav-item">
-        <a href="projetos.html" data-spa-link aria-haspopup="true" aria-expanded="false">Projetos ▾</a>
-        <div class="dropdown" role="menu">
+        <a href="projetos.html" data-spa-link aria-haspopup="true" aria-expanded="false" aria-controls="menu-projetos">Projetos ▾</a>
+        <div id="menu-projetos" class="dropdown" role="menu">
           <a href="projetos.html#educacao" data-spa-link role="menuitem">Educação</a>
           <a href="projetos.html#saude" data-spa-link role="menuitem">Saúde</a>
           <a href="projetos.html#meioambiente" data-spa-link role="menuitem">Meio ambiente</a>
@@ -58,6 +59,11 @@
   </div>
 </section>
 </main>
+<div class="theme-controls" role="group" aria-label="Preferências de tema">
+  <button class="theme-btn" data-theme="light" aria-pressed="false">Claro</button>
+  <button class="theme-btn" data-theme="dark" aria-pressed="false">Escuro</button>
+  <button class="theme-btn" data-theme="contrast" aria-pressed="false">Alto contraste</button>
+</div>
 <footer class="section" style="background:var(--white); border-top:1px solid var(--color-neutral-200)">
   <div class="container grid-12">
     <div class="col-md-6 col-lg-4">

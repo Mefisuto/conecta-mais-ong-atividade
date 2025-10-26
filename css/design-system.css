@@ -64,3 +64,50 @@ a:hover{text-decoration:underline}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+/* Visually hidden utility */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Skip link */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;width:auto;height:auto;background:#000;color:#fff;padding:8px 12px;border-radius:8px;z-index:3000}
+
+/* Theme toggles */
+.theme-controls{position:fixed;left:16px;bottom:16px;display:flex;gap:8px;z-index:2500}
+.theme-btn{border:1px solid var(--color-neutral-300);background:var(--white);padding:8px 10px;border-radius:10px;cursor:pointer}
+.theme-btn:focus-visible{outline:3px solid var(--color-accent-500);outline-offset:2px}
+
+/* Dark theme (respects system but allows manual override via .theme-dark on html) */
+@media (prefers-color-scheme: dark){
+  :root{ color-scheme: dark; }
+  body{ background:#0D1117; color:#E6EDF3; }
+  .card,.stat{ background:#161B22; border-color:#2D333B }
+  .nav a:hover,.nav a:focus{ background:#1F2328 }
+  .site-header{ background:#0D1117 }
+}
+html.theme-dark body{ background:#0D1117; color:#E6EDF3 }
+html.theme-dark .card, html.theme-dark .stat{ background:#161B22; border-color:#2D333B }
+html.theme-dark .nav a:hover, html.theme-dark .nav a:focus{ background:#1F2328 }
+html.theme-dark .site-header{ background:#0D1117 }
+
+/* High contrast mode */
+html.theme-contrast, html.theme-contrast body{
+  --color-primary-600:#004A99;
+  --color-primary-500:#0066CC;
+  --color-primary-400:#0091FF;
+  --color-secondary-600:#7A003B;
+  --color-secondary-500:#A8004F;
+  --color-neutral-900:#000000;
+  --color-neutral-800:#0A0A0A;
+  --color-neutral-700:#1A1A1A;
+  --color-neutral-600:#2A2A2A;
+  --color-neutral-500:#5A5A5A;
+  --color-neutral-400:#7A7A7A;
+  --color-neutral-300:#C0C0C0;
+  --color-neutral-200:#D9D9D9;
+  --color-neutral-100:#EFEFEF;
+  --color-neutral-50:#FAFAFA;
+}
+html.theme-contrast body{ background:#FFFFFF; color:#000000 }
+html.theme-contrast .btn-primary{ background:#004A99; color:#fff }
+html.theme-contrast .btn-outline{ border-color:#004A99; color:#004A99 }
+html.theme-contrast .btn-outline:hover{ background:#004A99; color:#fff }

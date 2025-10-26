@@ -64,3 +64,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+// Keyboard navigation for dropdown (arrow keys) and ESC close
+(function(){
+  const nav = document.querySelector('.nav');
+  if(!nav) return;
+  nav.addEventListener('keydown', (e)=>{
+    const current = e.target.closest('a');
+    if(!current) return;
+    const items = Array.from(nav.querySelectorAll('a'));
+    const idx = items.indexOf(current);
+    if(e.key === 'ArrowRight'){ e.preventDefault(); items[(idx+1)%items.length].focus(); }
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); items[(idx-1+items.length)%items.length].focus(); }
+    if(e.key === 'ArrowDown'){
+      const dd = current.parentElement?.querySelector?.('.dropdown a');
+      if(dd){ e.preventDefault(); dd.focus(); }
+    }
+    if(e.key === 'Escape'){
+      const open = document.querySelector('.modal-backdrop.open');
+      if(open){ open.classList.remove('open'); }
+    }
+  });
+})();
+
+// Theme toggles with localStorage
+(function(){
+  const KEY='prefTheme';
+  const html=document.documentElement;
+  function applyTheme(val){
+    html.classList.remove('theme-dark','theme-contrast');
+    if(val==='dark') html.classList.add('theme-dark');
+    if(val==='contrast') html.classList.add('theme-contrast');
+  }
+  try{
+    const saved = localStorage.getItem(KEY);
+    if(saved) applyTheme(saved);
+  }catch{}
+  document.addEventListener('click',(e)=>{
+    const btn = e.target.closest('[data-theme]');
+    if(!btn) return;
+    const val = btn.getAttribute('data-theme');
+    applyTheme(val);
+    try{ localStorage.setItem(KEY, val); }catch{}
+    window.showToast?.('Preferência de tema aplicada.','info');
+  });
+})();
+
+// Update ARIA on hamburger and dropdown toggles
+(function(){
+  const burger=document.querySelector('[data-hamburger]');
+  const nav=document.querySelector('[data-nav]');
+  if(burger&&nav){
+    burger.addEventListener('click',()=>{
+      const open = nav.classList.contains('open');
+      burger.setAttribute('aria-expanded', String(!open));
+    });
+  }
+})();
